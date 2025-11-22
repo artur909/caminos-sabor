@@ -1,1 +1,150 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --ink: #2b2b2b;
+  --brand-red: #B13704;
+  --brand-yellow: #fec53d;
+  --brand-green: #6c9328;
+  --paper: #fffaf4;
+  /* Modern theme tokens */
+  --bg-page: #f6f7fb;
+  --surface-1: #ffffff;
+  --surface-2: #f8f9fb;
+  --text-strong: #131722;
+  --text-soft: #5a6270;
+  --border-soft: rgba(19,23,34,.12);
+  --shadow-sm: 0 6px 22px rgba(17,17,26,.06);
+  --shadow-md: 0 12px 32px rgba(17,17,26,.08);
+  --shadow-lg: 0 16px 44px rgba(17,17,26,.10);
+  --radius-md: 14px;
+  --radius-lg: 18px;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', 'Inter', ui-serif, Georgia, serif;
+    text-wrap: balance;
+  }
+  body { background: var(--bg-page); color: var(--text-strong); }
+  a, button { transition: all .15s ease-in-out; }
+}
+
+/* Header modern glass */
+header.sticky { 
+  background: rgba(255,255,255,.78) !important; 
+  backdrop-filter: saturate(1.2) blur(14px);
+  border-bottom: 1px solid var(--border-soft) !important;
+  box-shadow: var(--shadow-sm);
+}
+header.sticky nav a { color: var(--text-soft); }
+header.sticky nav a:hover { color: var(--brand-red); }
+header.sticky > div > a:last-child { 
+  border: 1px solid var(--border-soft) !important; 
+  background: linear-gradient(90deg,#e05210,#b13704) !important; 
+  color: #fff !important; border-radius: 9999px; 
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero overhaul */
+section#hero { 
+  background: radial-gradient(1200px 600px at 0% -10%, rgba(254,197,61,.10), transparent 60%),
+              radial-gradient(800px 500px at 100% 0%, rgba(108,147,40,.10), transparent 65%),
+              linear-gradient(180deg,#ffffff 0%,#f9fafb 60%,#f6f7fb 100%) !important;
+}
+section#hero .stars-overlay { opacity:.12; filter: contrast(105%) saturate(105%); }
+section#hero h1 { 
+  background: linear-gradient(90deg,#0f172a 0%, #b13704 55%, #0f172a 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+section#hero p { color: var(--text-soft) !important; font-size: 1.05rem; }
+section#hero #cta a { 
+  border: 1px solid var(--border-soft) !important; 
+  border-radius: 9999px; padding: .75rem 1.25rem; 
+  box-shadow: var(--shadow-sm); font-weight: 600;
+}
+section#hero #cta a:first-child { 
+  background: linear-gradient(90deg,#e05210,#b13704) !important; color: #fff !important; 
+}
+section#hero #cta a:nth-child(2) { 
+  background: linear-gradient(90deg,#ffe07a,#fec53d) !important; color: #1c1f24 !important; 
+}
+section#hero #cta a:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+section#hero .grid > div:last-child > div { 
+  border-radius: var(--radius-lg); border: 1px solid var(--border-soft) !important; 
+  box-shadow: var(--shadow-lg); background: linear-gradient(135deg,#fef3c7 0%, #fde68a 40%, #fecaca 100%) !important;
+}
+
+/* Section cards modern */
+.section-card { 
+  background: var(--surface-1) !important; border: 1px solid var(--border-soft) !important; 
+  border-radius: var(--radius-lg) !important; box-shadow: var(--shadow-md) !important; 
+}
+.section-heading { color: #0f172a; }
+
+/* Recetas: cards & tags */
+section#recetas { background: var(--surface-2) !important; }
+section#recetas .marquee { gap: 1.25rem; }
+section#recetas article { 
+  border: 1px solid var(--border-soft) !important; border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-md) !important; background: var(--surface-1) !important;
+}
+section#recetas article .h-36 { 
+  background: radial-gradient(ellipse at 20% 20%, rgba(177,55,4,.15), transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(254,197,61,.20), transparent 60%),
+              linear-gradient(135deg, #fff 0%, #f7f8fb 100%) !important;
+}
+section#recetas article h3 { font-weight: 700; color: var(--text-strong); }
+section#recetas article p { color: var(--text-soft); }
+section#recetas article .flex.items-center span { 
+  border-radius: 9999px; box-shadow: var(--shadow-sm);
+}
+section#recetas article .flex.flex-wrap span { 
+  border-radius: 9999px; border: 1px solid var(--border-soft); background: #fff;
+}
+section#recetas .carousel-arrow {
+  width: 44px; height: 44px; border-radius: 9999px; border: 1px solid var(--border-soft);
+  background: #fff; box-shadow: var(--shadow-sm);
+}
+section#recetas .carousel-arrow:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* Artesanos */
+section#artesanos { background: var(--surface-1) !important; }
+section#artesanos article { border: 1px solid var(--border-soft) !important; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+section#artesanos article .h-40 {
+  background: linear-gradient(135deg,#f7f8fb 0%, #ffe8b5 50%, #fde1d5 100%) !important;
+}
+section#artesanos button { border-radius: 9999px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-soft); }
+
+/* Aliados */
+section#aliados { background: var(--surface-2) !important; }
+section#aliados .grid > div { border: 1px solid var(--border-soft); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+section#aliados .grid > div span { border-radius: 12px; background: linear-gradient(135deg,#e8f3e1,#cfe7ba) !important; }
+
+/* Modales: glass look */
+[aria-modal="true"] .relative.max-w-5xl { 
+  background: rgba(255,255,255,.9) !important; border: 1px solid var(--border-soft) !important; 
+  box-shadow: var(--shadow-lg) !important; border-radius: 20px !important; 
+}
+[aria-modal="true"] .p-4 { background: transparent !important; }
+[aria-modal="true"] .md\:border-l { border-left: 1px solid var(--border-soft) !important; }
+[aria-modal="true"] iframe { border-radius: var(--radius-md); }
+[aria-modal="true"] button { border: 1px solid var(--border-soft); border-radius: 10px; }
+
+/* Form in product modal */
+[aria-modal="true"] input, [aria-modal="true"] textarea { 
+  border: 1px solid var(--border-soft) !important; border-radius: var(--radius-md) !important; 
+}
+[aria-modal="true"] form button[type="submit"] { border-radius: 9999px; box-shadow: var(--shadow-sm); }
+
+/* Footer */
+footer { background: var(--surface-1); }
+footer .bg-neutral-50 { background: linear-gradient(180deg,#f7f8fb,#eef1f6) !important; }
+footer h3 { color: var(--text-strong); }
+footer p, footer a { color: var(--text-soft); }

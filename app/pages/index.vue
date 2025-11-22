@@ -1,7 +1,8 @@
 <template>
   <!-- Hero -->
-  <section id="hero" class="relative overflow-hidden bg-neutral-50">
-    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-24 grid md:grid-cols-2 gap-12 items-center">
+  <section id="hero" class="relative overflow-hidden hero-bg">
+    <div class="stars-overlay"></div>
+    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-28 md:py-32 grid md:grid-cols-2 gap-16 items-center">
       <div class="max-w-[75ch]">
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
           Los Caminos del Sabor
@@ -9,11 +10,11 @@
         <p class="mt-6 text-neutral-700">
           Un videojuego que revaloriza la gastronomía peruana con estilo pixelart.
         </p>
-        <div class="mt-8 flex gap-4" id="cta">
+        <div class="mt-10 flex gap-6" id="cta">
           <a href="#recetas" class="px-5 py-3 rounded-md bg-[#B13704] text-white font-semibold hover:opacity-90">Explorar recetas</a>
           <a href="#artesanos" class="px-5 py-3 rounded-md bg-[#fec53d] text-[#2b2b2b] font-semibold hover:opacity-90">Canjear productos</a>
         </div>
-        <p class="mt-4 text-xs text-neutral-500">Conoce a ganadores y participa para ser el próximo.</p>
+        <p class="mt-5 text-xs text-neutral-500">Conoce a ganadores y participa para ser el próximo.</p>
       </div>
       <div class="flex md:justify-end">
         <div class="w-full md:w-96 h-56 bg-[linear-gradient(135deg,#fec53d_0%,#B13704_50%,#6c9328_100%)] border-4 border-[#6c9328] shadow-[0_0_0_8px_#fec53d]">
@@ -24,24 +25,24 @@
 
   <!-- Descripción del juego -->
   <section id="descripcion" class="bg-white">
-    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-24 grid md:grid-cols-3 gap-12">
-      <div class="md:col-span-2 max-w-[75ch]">
-        <h2 class="text-2xl font-bold">Descripción del videojuego</h2>
-        <p class="mt-6 text-neutral-700">
+    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-28 md:py-32 grid md:grid-cols-3 gap-16">
+      <div class="md:col-span-2 max-w-[75ch] section-card">
+        <h2 class="section-heading text-2xl md:text-3xl font-extrabold">Descripción del videojuego</h2>
+        <p class="mt-8 text-neutral-700 leading-relaxed md:leading-loose">
           Los Caminos del Sabor: un videojuego que invita a redescubrir las recetas y tradiciones culinarias del Perú a través de una experiencia interactiva única.
         </p>
-        <p class="mt-4 text-neutral-700">
+        <p class="mt-6 text-neutral-700 leading-relaxed md:leading-loose">
           La historia nos presenta a Misti y Blanca, dos jóvenes de Paititi que emprenden una travesía por las principales ciudades del país con una misión especial: recopilar los secretos de la cocina peruana para completar el libro de recetas de su maestro.
         </p>
-        <p class="mt-4 text-neutral-700">
+        <p class="mt-6 text-neutral-700 leading-relaxed md:leading-loose">
           Este proyecto busca revalorizar la riqueza gastronómica del Perú, llevando a los jugadores a conocer la diversidad de sabores que caracterizan a cada región.
         </p>
       </div>
-      <aside class="space-y-3">
-        <div class="p-4 border rounded-md">
+      <aside class="space-y-4">
+        <div class="section-card">
           <p class="text-sm">Beta presentada en PERUMEC con gran entusiasmo y expectativa.</p>
         </div>
-        <div class="p-4 border rounded-md">
+        <div class="section-card">
           <p class="text-sm">Próximamente disponible en Play Store y versión web.</p>
         </div>
       </aside>
@@ -50,14 +51,14 @@
 
   <!-- Recetas (slider infinito) -->
   <section id="recetas" class="bg-neutral-50">
-    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-24 grid md:grid-cols-2 gap-12 items-center">
+    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-28 md:py-32 grid md:grid-cols-2 gap-16 items-center">
       <div class="max-w-[75ch]">
-        <h2 class="text-2xl font-bold">Recetas destacadas</h2>
-        <p class="text-sm text-neutral-600">Slider infinito con movimiento automático y videos verticales.</p>
+        <h2 class="section-heading text-2xl md:text-3xl font-extrabold">Recetas destacadas</h2>
+        <p class="mt-4 text-sm text-neutral-600 leading-relaxed">Slider infinito con movimiento automático y videos verticales.</p>
       </div>
-      <div class="mt-8 overflow-hidden relative">
-        <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-md bg-white/80 border hover:bg-white" @click="speedBurst('backward')" @pointerdown="startHold('backward')" @pointerup="stopHold" @pointerleave="stopHold" aria-label="Retroceder">◄</button>
-        <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-md bg-white/80 border hover:bg-white" @click="speedBurst('forward')" @pointerdown="startHold('forward')" @pointerup="stopHold" @pointerleave="stopHold" aria-label="Avanzar">►</button>
+      <div class="mt-12 overflow-hidden relative">
+        <button class="carousel-arrow absolute left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 grid place-items-center" @click="speedBurst('backward')" @pointerdown="startHold('backward')" @pointerup="stopHold" @pointerleave="stopHold" aria-label="Retroceder">◄</button>
+        <button class="carousel-arrow absolute right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 grid place-items-center" @click="speedBurst('forward')" @pointerdown="startHold('forward')" @pointerup="stopHold" @pointerleave="stopHold" aria-label="Avanzar">►</button>
         <div ref="marqueeRef" class="marquee flex gap-6">
           <div class="flex gap-4 shrink-0">
             <article v-for="recipe in recipes" :key="'a-'+recipe.id" class="min-w-64 w-64 bg-white border-2 border-[#2b2b2b] shadow-[4px_4px_0_0_#B13704] hover:shadow-[2px_2px_0_0_#B13704] transition-transform hover:-translate-y-0.5">
@@ -103,14 +104,14 @@
 
   <!-- Artesanos -->
   <section id="artesanos" class="bg-white">
-    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-24">
+    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-28 md:py-32">
       <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-bold">Artesanos y productos</h2>
+        <h2 class="section-heading text-2xl md:text-3xl font-extrabold">Artesanos y productos</h2>
         <button class="px-3 py-2 rounded-md bg-[#B13704] text-white text-sm font-semibold hover:opacity-90" @click="openProductModal(exampleProduct)">
           Ver producto
         </button>
       </div>
-      <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-10">
         <article v-for="n in 6" :key="n" class="border rounded-md bg-neutral-50">
           <div class="h-40 bg-[repeating-linear-gradient(90deg,#fec53d_0_12px,#B13704_12px_24px,#6c9328_24px_36px)]"></div>
           <div class="p-4">
@@ -125,9 +126,9 @@
 
   <!-- Aliados -->
   <section id="aliados" class="bg-neutral-50">
-    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-24">
-      <h2 class="text-2xl font-bold">Aliados</h2>
-      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="mx-auto w-full max-w-[min(100vw,1600px)] px-8 lg:px-12 py-28 md:py-32">
+      <h2 class="section-heading text-2xl md:text-3xl font-extrabold">Aliados</h2>
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-10">
         <div v-for="n in 8" :key="n" class="h-20 bg-white border rounded-md shadow-sm flex items-center justify-center">
           <span class="w-8 h-8 bg-[#6c9328]"></span>
         </div>
@@ -486,4 +487,74 @@ onUnmounted(() => {
 .marquee { animation: marquee var(--marquee-duration, 22s) linear infinite; animation-direction: var(--marquee-direction, normal); }
 
 @media (prefers-reduced-motion: reduce) { .marquee { animation: none; } }
+
+/* Hero background & stars overlay - enhanced */
+.hero-bg { background:
+  radial-gradient(1200px 600px at 0% -10%, rgba(254,197,61,.12), transparent 60%),
+  radial-gradient(800px 500px at 100% 0%, rgba(108,147,40,.10), transparent 65%),
+  linear-gradient(to bottom, #ffffff, #fffdf5 50%, #faf7f0);
+}
+.hero-bg::after {
+  content:""; position:absolute; inset:auto auto -40% -20%;
+  width: 1200px; height: 1200px; pointer-events:none;
+  background: radial-gradient(closest-side, rgba(254,197,61,.25), transparent 60%);
+  filter: blur(24px); opacity:.35; transform: translate3d(0,0,0);
+  animation: floaty 18s ease-in-out infinite;
+}
+@keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+
+@keyframes twinkle { 0%,100% { opacity:.14 } 50% { opacity:.22 } }
+.stars-overlay { position:absolute; inset:0; pointer-events:none;
+  background-image: radial-gradient(rgba(43,43,43,0.18) 1px, transparent 1px);
+  background-size: 22px 22px; opacity:.18; animation: twinkle 6s ease-in-out infinite;
+  filter: contrast(105%) saturate(104%);
+}
+
+/* Encabezados decorativos tipo referencia */
+.section-heading {
+  position: relative; display: inline-flex; align-items: center; gap: .75rem;
+  padding: .25rem .75rem; text-transform: none; letter-spacing: .01em;
+}
+.section-heading::before, .section-heading::after {
+  content: ""; display: block; width: 72px; height: 2px;
+  background: linear-gradient(to right, transparent, #B13704 50%, transparent);
+  border-radius: 9999px; opacity: .4;
+}
+@media (min-width: 768px) { .section-heading::before, .section-heading::after { width: 96px; } }
+
+/* Tarjetas/secciones con borde y sombra de marca */
+.section-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf4 100%);
+  border: 2px solid #2b2b2b; border-radius: 18px;
+  box-shadow: 8px 8px 0 0 #B13704; padding: 1rem;
+}
+
+/* Flechas del carrusel como botones redondos */
+.carousel-arrow {
+  width: 40px; height: 40px; border-radius: 9999px;
+  border: 2px solid #2b2b2b; background: rgba(255,255,255,.95);
+  box-shadow: 4px 4px 0 0 #B13704; transition: transform .15s, box-shadow .15s, background-color .15s;
+}
+.carousel-arrow:hover { transform: translateY(-1px); box-shadow: 2px 2px 0 0 #B13704; }
+
+/* Hero title gradient */
+#hero h1 {
+  background: linear-gradient(90deg, var(--ink) 0%, var(--brand-red) 60%, var(--ink) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* CTA polish */
+#cta a { border: 2px solid var(--ink); box-shadow: 4px 4px 0 0 var(--brand-red); transition: transform .15s, box-shadow .15s; }
+#cta a:hover { transform: translateY(-1px); box-shadow: 2px 2px 0 0 var(--brand-red); }
+#cta a:active { transform: translateY(0); }
+
+/* Cards hover polish */
+.section-card { transition: transform .2s, box-shadow .2s; }
+.section-card:hover { transform: translateY(-2px); box-shadow: 6px 6px 0 0 var(--brand-red); }
+
+/* Accessibility */
+.carousel-arrow:focus-visible { outline: 2px solid var(--brand-green); outline-offset: 2px; }
+
+/* Recipe cards subtle lift */
+#recetas article:hover { transform: translateY(-2px); }
 </style>
